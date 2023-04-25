@@ -51,3 +51,6 @@ it("renders without crashing", () => {
 
 - State (comments)
 - Actions (SaveComment... adds a comment via the comments reducer)
+
+
+**JSDOM** - A library that acts like a browser inside of node... tricks the react library into thinking there is a browser. Allows us to use things like document.querySelector...
