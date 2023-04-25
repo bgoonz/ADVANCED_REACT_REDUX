@@ -87,3 +87,13 @@ it("shows a comment box", () => {
   expect(wrapped.find(CommentBox).length).toEqual(1);
 });
 ```
+
+
+**To use absolute paths for imports (_rather then relative paths_)**
+
+create .env file in root directory and add:
+
+```
+NODE_PATH=src
+```
+
