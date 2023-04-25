@@ -54,3 +54,17 @@ it("renders without crashing", () => {
 
 
 **JSDOM** - A library that acts like a browser inside of node... tricks the react library into thinking there is a browser. Allows us to use things like document.querySelector...
+
+
+
+**Expectation**
+> every it block should produce at least one expectation
+```js
+
+expect(value we are inspecting).matcher(value we expect)
+
+```
+
+
+
+```
