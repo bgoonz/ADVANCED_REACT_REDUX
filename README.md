@@ -39,3 +39,14 @@ it("renders without crashing", () => {
 5. Jest waits for a file to change, then runs them all again. 
 
 
+##### The App We will Test
+
+**Comments**
+- App Component
+- CommentBox with submit button
+- Comment list component
+
+
+##### Redux Design:
+- State (comments)
+- Actions (SaveComment... adds a comment via the comments reducer)
