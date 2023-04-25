@@ -35,7 +35,7 @@ it("renders without crashing", () => {
 
 1. Run `npm run test`
 2. Jest runner starts up
-3. Jest finds all files ending in .test.js and runs them
+3. Jest finds all files ending in `.test.js` or `.spec.js` or any file in a folder `/__tests__` and runs them
 4. Jest prints out results of tests to the terminal
 5. Jest waits for a file to change, then runs them all again.
 
