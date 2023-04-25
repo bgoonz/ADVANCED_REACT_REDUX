@@ -52,19 +52,38 @@ it("renders without crashing", () => {
 - State (comments)
 - Actions (SaveComment... adds a comment via the comments reducer)
 
-
 **JSDOM** - A library that acts like a browser inside of node... tricks the react library into thinking there is a browser. Allows us to use things like document.querySelector...
 
-
-
 **Expectation**
+
 > every it block should produce at least one expectation
+
 ```js
 
 expect(value we are inspecting).matcher(value we expect)
 
 ```
 
+---
 
+##### Enzyme API
 
+[Enzyme Docs](https://airbnb.io/enzyme/docs/api/)
+
+- Static - Render the given component and return plain HTML
+- Shallow - Render just the given component and none of its children
+- Full DOM - Render the component and all of its children + let us modify it afterwards
+
+**Searching for comment box using enzyme**
+
+```js
+import React from "react";
+import { shallow } from "enzyme";
+import CommentBox from "../CommentBox";
+import App from "../App";
+
+it("shows a comment box", () => {
+  const wrapped = shallow(<App />);
+  expect(wrapped.find(CommentBox).length).toEqual(1);
+});
 ```
