@@ -149,21 +149,20 @@ describe("the text area", () => {
 });
 ```
 
-
 ---
 
 ##### Redux Setup
 
-
 **Comments reducer**
+
 > initial setup (comments.js)
 
 ```js
-export default function ( state= [], action ) {
-    switch ( action.type ) {
-        default:
-            return state;
-    }
+export default function (state = [], action) {
+  switch (action.type) {
+    default:
+      return state;
+  }
 }
 ```
 
@@ -177,9 +176,8 @@ import reducers from "reducers";
 
 > where reducers is the index.js file in our reducers folder
 
-
 _here is the complete file_
-    
+
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
@@ -195,16 +193,12 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
-    
+
 we get access to the redux store in our components using a connect function from react-redux
 
-    
-    
-    
 ---
 
 ##### Root Component (provider)
-
 
 ```js
 import React from "react";
@@ -212,17 +206,11 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "reducers";
 
-
 export default (props) => {
-  
-    return (
-        <Provider store={ createStore( reducers, {} ) }>
-            {props.children}
-            </Provider>
-    )
+  return (
+    <Provider store={createStore(reducers, {})}>{props.children}</Provider>
+  );
 };
 ```
 
 > props.children is a special prop that allows us to pass in components to the root component... i.e. to wrap any component in the provider.
-
-
