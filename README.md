@@ -97,3 +97,9 @@ create .env file in root directory and add:
 NODE_PATH=src
 ```
 
+**Before Each** is a helper function that takes over repetitive code that is used in multiple tests. 
+
+```js
+
+
+```
