@@ -88,7 +88,6 @@ it("shows a comment box", () => {
 });
 ```
 
-
 **To use absolute paths for imports (_rather then relative paths_)**
 
 create .env file in root directory and add:
@@ -97,13 +96,12 @@ create .env file in root directory and add:
 NODE_PATH=src
 ```
 
-**Before Each** is a helper function that takes over repetitive code that is used in multiple tests. 
+**Before Each** is a helper function that takes over repetitive code that is used in multiple tests.
 
 ```js
 let wrapped;
 
-beforeEach( () => { 
-      wrapped = shallow(<App />);
+beforeEach(() => {
+  wrapped = shallow(<App />);
 });
-
 ```
