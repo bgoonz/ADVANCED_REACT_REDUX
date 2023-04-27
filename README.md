@@ -167,5 +167,39 @@ export default function ( state= [], action ) {
 }
 ```
 
+To pass state through our app we need to import the following in our index.js file
+
+```js
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducers from "reducers";
+```
+
+> where reducers is the index.js file in our reducers folder
+
+
+_here is the complete file_
+    
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducers from "reducers";
+import App from "./components/App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+    
+we get access to the redux store in our components using a connect function from react-redux
+
+    
+    
+    
 
 
