@@ -4,6 +4,7 @@ import CommentBox from "components/CommentBox";
 import CommentList from "components/CommentList";
 import App from "components/App";
 
+
 let wrapped;
 
 beforeEach( () => { 
