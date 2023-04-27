@@ -20,6 +20,7 @@ it("has a text area that users can type in", () => {
   wrapped.find("textarea").simulate("change", {
     target: { value: "new comment" },
   } );
+    // Force the component to update
     wrapped.update();
     
     expect( wrapped.find( "textarea" ).prop( "value" ) ).toEqual( "new comment" );
