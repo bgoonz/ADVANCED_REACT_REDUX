@@ -201,5 +201,28 @@ we get access to the redux store in our components using a connect function from
     
     
     
+---
+
+##### Root Component (provider)
+
+
+```js
+import React from "react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducers from "reducers";
+
+
+export default (props) => {
+  
+    return (
+        <Provider store={ createStore( reducers, {} ) }>
+            {props.children}
+            </Provider>
+    )
+};
+```
+
+> props.children is a special prop that allows us to pass in components to the root component... i.e. to wrap any component in the provider.
 
 
