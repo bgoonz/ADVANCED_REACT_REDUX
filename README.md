@@ -260,8 +260,7 @@ it("shows the text for each comment", () => {
 ---
 
 ## Higher Order Components:
-
-### Higher Order Components (HOCs) in React
+> A higher order component is a function that takes a component as an argument and returns a new component.
 
 
 #### What are Higher Order Components?
