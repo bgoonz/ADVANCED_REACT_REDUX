@@ -221,3 +221,40 @@ export default (props) => {
 **CreateStore** is an instance of the redux store to use in our components... it takes two arguments: reducers and initial state...
 
 
+---
+
+**How to check the text that is rendered by a component**
+
+```js
+import React from "react";
+import { mount } from "enzyme";
+import CommentList from "components/CommentList";
+import Root from "Root";
+
+let wrapped;
+
+beforeEach(() => {
+  const initialState = {
+    comments: ["Comment 1", "Comment 2"],
+  };
+
+  wrapped = mount(
+    <Root initialState={initialState}>
+      <CommentList />
+    </Root>
+  );
+});
+
+it("creates one LI per comment", () => {
+  expect(wrapped.find("li").length).toEqual(2);
+});
+
+it("shows the text for each comment", () => {
+  expect(wrapped.render().text()).toContain("Comment 1");
+  expect(wrapped.render().text()).toContain("Comment 2");
+});
+```
+
+**.render()** is a method from enzyme that renders the component as html... we can then use the .text() method to get the text from the html.
+
+**.render()** is a cherio wrapper... a library that allows us to traverse html like jquery.
