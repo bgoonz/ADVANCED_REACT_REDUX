@@ -12,7 +12,7 @@ beforeEach( () => {
     
     wrapped = mount(
         <Root initialState={initialState}>
-        <CommentList />
+        <CommentList  />
         </Root>
     );
     });

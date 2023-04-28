@@ -15,7 +15,7 @@ class CommentList extends Component {
     );
   }
 }
-
+//mapStateToProps is how redux state is mapped to props in children components
 function mapStateToProps(state) {
   return { comments: state.comments };
 }
