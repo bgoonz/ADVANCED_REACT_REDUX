@@ -256,3 +256,63 @@ it("shows the text for each comment", () => {
 **.render()** is a method from enzyme that renders the component as html... we can then use the .text() method to get the text from the html.
 
 **.render()** is a cherio wrapper... a library that allows us to traverse html like jquery.
+
+---
+
+## Higher Order Components:
+
+### Higher Order Components (HOCs) in React
+
+
+#### What are Higher Order Components?
+
+
+- Higher Order Components (HOCs) are functions that take a component and return a new component with enhanced functionality. They are a way to reuse component logic and share it among different components.
+
+#### How do Higher Order Components work?
+
+
+-HOCs wrap a component, providing it with additional props, state, or behavior. They can also modify the lifecycle methods of a component or its rendering logic.
+
+#### Why use Higher Order Components?
+
+
+- HOCs allow for code reuse and separation of concerns. They can enhance a component's functionality without modifying its original implementation. HOCs can also be used to apply cross-cutting concerns, such as authentication or logging, to multiple components.
+
+>Example of a Higher Order Component
+
+
+```js
+
+const withLoading = (WrappedComponent) => {
+  return class WithLoading extends React.Component {
+    state = {
+      isLoading: true,
+    };
+
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({ isLoading: false });
+      }, 2000);
+    }
+
+    render() {
+      if (this.state.isLoading) {
+        return <div>Loading...</div>;
+      }
+
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+};
+
+const MyComponent = ({ data }) => <div>{data}</div>;
+
+const MyComponentWithLoading = withLoading(MyComponent);
+```
+
+In this example, `withLoading` is a Higher Order Component that wraps `MyComponent`. It adds a loading state that displays a loading message until the data is fetched, and then passes the data as props to `MyComponent`.
+
+
+
+
