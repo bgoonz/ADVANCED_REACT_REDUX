@@ -215,11 +215,9 @@ export default (props) => {
 
 > props.children is a special prop that allows us to pass in components to the root component... i.e. to wrap any component in the provider.
 
-
 ---
 
 **CreateStore** is an instance of the redux store to use in our components... it takes two arguments: reducers and initial state...
-
 
 ---
 
