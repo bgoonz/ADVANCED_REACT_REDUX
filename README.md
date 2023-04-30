@@ -309,7 +309,6 @@ const MyComponentWithLoading = withLoading(MyComponent);
 
 In this example, `withLoading` is a Higher Order Component that wraps `MyComponent`. It adds a loading state that displays a loading message until the data is fetched, and then passes the data as props to `MyComponent`.
 
-
 ###### requireAuth.js
 
 > In our components folder we are going to create a new file called requireAuth.js which exports a function rather than a component hence the convention of a file name with a lowercase first letter.
@@ -319,11 +318,10 @@ In this example, `withLoading` is a Higher Order Component that wraps `MyCompone
 > The followin syntax:
 
 ```js
-  return connect(mapStateToProps)(ComposedComponent);
+return connect(mapStateToProps)(ComposedComponent);
 ```
 
 > gives the composedComponent as an argument to the function that is retruned by the connect function.
-
 
 **In the CommentBox component**
 
@@ -333,4 +331,10 @@ export default connect(null, actions)(CommentBox);
 
 the action creators are getting passed into CommentBox as props.
 
+---
 
+## How React & Redux Talk To Each Other:
+
+- Starts with React which calls an Action Creator function that return an action object.
+- That action object with a type and payload property get sent to a series of middlewhere functions (that log modify or stop the action) and then get forwarded to the reducers.
+- The reducers perform some logic and returns a new state object to our redux store which is accessed by react components that are connected to the store.
