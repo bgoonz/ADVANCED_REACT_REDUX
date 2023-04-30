@@ -7,10 +7,7 @@ export default (ChildComponent) => {
       this.shouldNavigateAway();
     }
 
-    // Our component just got updated
-    componentDidUpdate() {
-      this.shouldNavigateAway();
-    }
+
     // we get the pops.history from the react-router-dom through the route component in App.js that wraps the CommentBox component.
     shouldNavigateAway() {
       if (!this.props.auth) {

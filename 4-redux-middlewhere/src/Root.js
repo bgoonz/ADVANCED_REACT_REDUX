@@ -8,7 +8,7 @@ export default (props) => {
   const store = createStore(
     reducers,
     props.initialState,
-    applyMiddleware(reduxPromise)
+    applyMiddleware()
   );
   return <Provider store={store}>{props.children}</Provider>;
 };
