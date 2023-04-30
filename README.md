@@ -436,3 +436,28 @@ const port = process.env.PORT || 3090;
 const server = http.createServer( app );
 ```
 > the http library is native to node... `const server = http.createServer( app );` creates an http server that knows how to receive requests and anything that comes in will be forwarded to the express application.
+
+
+**Morgan** is a logging framework for node and express.
+**Body Parser** is a middleware that parses incoming requests into json.
+
+>both morgan and body parser are middleware that are wired up to the express application using `app.use()`
+
+```js
+app.use( morgan( 'combined' ) );
+app.use( bodyParser.json( { type: '*/*' } ) );
+```
+
+> Any incomming request will get passed into both of these middleware before they get passed into the route handlers.
+
+**Morgan logs the following when we visit localhost:3090**
+
+```
+$ node index.js
+Server listening on: 3090
+::1 - - [30/Apr/2023:22:43:30 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; 
+Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+```
+
+**Body Parser** parses the body of the request into json and makes it available on the req.body property.
+
