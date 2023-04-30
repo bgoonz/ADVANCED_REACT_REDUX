@@ -400,7 +400,7 @@ _Here we have `{ ...action, payload: response };` ... normally, we would just ha
 
 ## Server Side Authentication
 
-### Cookies vs Tokens:
+### Cookies vs Tokens (we will use tokens):
 
 **Cookies** _bring state into the stateless HTTP protocol_
 
