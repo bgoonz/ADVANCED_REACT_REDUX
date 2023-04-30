@@ -325,4 +325,12 @@ In this example, `withLoading` is a Higher Order Component that wraps `MyCompone
 > gives the composedComponent as an argument to the function that is retruned by the connect function.
 
 
+**In the CommentBox component**
+
+```js
+export default connect(null, actions)(CommentBox);
+```
+
+the action creators are getting passed into CommentBox as props.
+
 
