@@ -1,17 +1,31 @@
 import React from "react";
-
-
-export default ( ChildComponent ) => {
-    
-    class ComposedComponent extends React.Component{
-        
-        
-        render() {
-            return <ChildComponent  />;
-        }
+import { connect } from "react-redux";
+export default (ChildComponent) => {
+  class ComposedComponent extends React.Component {
+    // Our component just got rendered
+    componentDidMount() {
+      this.shouldNavigateAway();
     }
-    
-    return ComposedComponent;
-    
+
+    // Our component just got updated
+    componentDidUpdate() {
+      this.shouldNavigateAway();
+    }
+
+    shouldNavigateAway() {
+      if (!this.props.auth) {
+        this.props.history.push("/");
+      }
+    }
+
+    render() {
+      return <ChildComponent />;
+    }
+  }
+function mapStateToProps(state) {
+  return { auth: state.auth };
 }
+  return connect(mapStateToProps)(ComposedComponent);
+};
+
 

@@ -314,5 +314,15 @@ In this example, `withLoading` is a Higher Order Component that wraps `MyCompone
 
 > In our components folder we are going to create a new file called requireAuth.js which exports a function rather than a component hence the convention of a file name with a lowercase first letter.
 
+**A note on the connect higher order component**
+
+> The followin syntax:
+
+```js
+  return connect(mapStateToProps)(ComposedComponent);
+```
+
+> gives the composedComponent as an argument to the function that is retruned by the connect function.
+
 
 
