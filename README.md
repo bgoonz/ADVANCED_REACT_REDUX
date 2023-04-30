@@ -417,35 +417,36 @@ _Here we have `{ ...action, payload: response };` ... normally, we would just ha
 - good for a distributed system across multiple domains
 
 > Request has a header with an authorization string
+
 ---
 
 ### Backend:
+
 > initial setup
+
 ```js
-const express = require( 'express' );
-const http = require( 'http' );
-const bodyParser = require( 'body-parser' );
-const morgan = require( 'morgan' );
+const express = require("express");
+const http = require("http");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
 
 // an instance of express
 const app = express();
 
-
-
 const port = process.env.PORT || 3090;
-const server = http.createServer( app );
+const server = http.createServer(app);
 ```
-> the http library is native to node... `const server = http.createServer( app );` creates an http server that knows how to receive requests and anything that comes in will be forwarded to the express application.
 
+> the http library is native to node... `const server = http.createServer( app );` creates an http server that knows how to receive requests and anything that comes in will be forwarded to the express application.
 
 **Morgan** is a logging framework for node and express.
 **Body Parser** is a middleware that parses incoming requests into json.
 
->both morgan and body parser are middleware that are wired up to the express application using `app.use()`
+> both morgan and body parser are middleware that are wired up to the express application using `app.use()`
 
 ```js
-app.use( morgan( 'combined' ) );
-app.use( bodyParser.json( { type: '*/*' } ) );
+app.use(morgan("combined"));
+app.use(bodyParser.json({ type: "*/*" }));
 ```
 
 > Any incomming request will get passed into both of these middleware before they get passed into the route handlers.
@@ -455,27 +456,52 @@ app.use( bodyParser.json( { type: '*/*' } ) );
 ```
 $ node index.js
 Server listening on: 3090
-::1 - - [30/Apr/2023:22:43:30 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; 
+::1 - - [30/Apr/2023:22:43:30 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0;
 Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
 **Body Parser** parses the body of the request into json and makes it available on the req.body property.
-
 
 ###### Router.js
 
 - we will create a new file called router.js that will contain all of our route handlers.
 
 ```js
-function router( app ) {
-    app.get( '/', ( req, res, next ) => {
-        res.send( [ 'water', 'phone', 'paper' ] );
-    } );
-    }
+function router(app) {
+  app.get("/", (req, res, next) => {
+    res.send(["water", "phone", "paper"]);
+  });
+}
 
 module.exports = router;
 ```
+
 > In the code above req is the incoming request and res is the outgoing response, next is a function that we call when we are done with the route handler.
-> ```res.send``` is a method that is available on the response object that we can use to send a response back to whoever made the request.
+> `res.send` is a method that is available on the response object that we can use to send a response back to whoever made the request.
+
+**Mongoose** is an ORM (Object Relational Mapper) that allows us to interact with a mongo database.
+
+```js
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+```
+
+> A Schema is a description of what a record in the database will look like.
+
+> mongoose.model creates a new model class that represents all the different records in the database.
+
+```js
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+// define our model
+const userSchema = new Schema({
+  email: { type: String, unique: true, lowercase: true },
+  password: String,
+});
+
+// create the model class
+const ModelClass = mongoose.model("user", userSchema);
+```
 
 
