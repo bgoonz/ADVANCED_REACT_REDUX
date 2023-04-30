@@ -461,3 +461,21 @@ Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.3
 
 **Body Parser** parses the body of the request into json and makes it available on the req.body property.
 
+
+###### Router.js
+
+- we will create a new file called router.js that will contain all of our route handlers.
+
+```js
+function router( app ) {
+    app.get( '/', ( req, res, next ) => {
+        res.send( [ 'water', 'phone', 'paper' ] );
+    } );
+    }
+
+module.exports = router;
+```
+> In the code above req is the incoming request and res is the outgoing response, next is a function that we call when we are done with the route handler.
+> ```res.send``` is a method that is available on the response object that we can use to send a response back to whoever made the request.
+
+
