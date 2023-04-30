@@ -344,7 +344,35 @@ the action creators are getting passed into CommentBox as props.
 ```js
 export default ({ dispatch }) =>
   (next) =>
-      ( action ) => {
-      
+  (action) => {};
+```
+
+**Dispatch Function** is a function that takes an action and makes copies of it and sends it to all the middlewhere and reducers.
+
+> async.js middlewhere:
+
+```js
+export default ({ dispatch }) =>
+  (next) =>
+  (action) => {
+    // Check to see if the action has a promise on its 'payload' property
+    // If it does, then wait for it to resolve
+    // If it doesn't, then send the action on to the next middleware
+    if (!action.payload || !action.payload.then) {
+      return next(action);
+    }
+    // We want to wait for the promise to resolve (get its data) and then create a new action with that data and dispatch it
+    action.payload.then((response) => {
+      const newAction = { ...action, payload: response };
+      dispatch(newAction);
+    });
   };
 ```
+
+- once we pass the first if statement we know that the action has a promise on its payload property.
+- the function on the then block will get called whenever the promise resolves.
+- the function will be invoked with whatever data resulted from the promise.
+
+_Here we have `{ ...action, payload: response };` ... normally, we would just have a single action object with a type and payload property... but here we are taking all the properties, and adding them to the new action object and then overriding the payload property with the response from the promise._
+
+- After this we dispatch the new action object to the dispatch function.
