@@ -1,4 +1,5 @@
-export default ({ dispatch }) =>
+const async =
+  ({ dispatch }) =>
   (next) =>
   (action) => {
     // Check to see if the action has a promise on its 'payload' property
@@ -13,3 +14,5 @@ export default ({ dispatch }) =>
       dispatch(newAction);
     });
   };
+
+export default async;
