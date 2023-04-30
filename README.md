@@ -395,3 +395,25 @@ _Here we have `{ ...action, payload: response };` ... normally, we would just ha
 
 - [Tiny Validator 4](https://github.com/geraintluff/tv4)
   - a library that will validate our state object against our json schema.
+
+---
+
+## Server Side Authentication
+
+### Cookies vs Tokens:
+
+**Cookies** _bring state into the stateless HTTP protocol_
+
+- Automatically included on all requests
+- unique to each domain
+- cannot be sent to different domains
+
+> Request has a header with a cookie object
+
+**Tokens**
+
+- Manually included (in the header) on some requests
+- Can be sent to any domain
+- good for a distributed system across multiple domains
+
+> Request has a header with an authorization string
