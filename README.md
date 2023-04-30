@@ -338,3 +338,13 @@ the action creators are getting passed into CommentBox as props.
 - Starts with React which calls an Action Creator function that return an action object.
 - That action object with a type and payload property get sent to a series of middlewhere functions (that log modify or stop the action) and then get forwarded to the reducers.
 - The reducers perform some logic and returns a new state object to our redux store which is accessed by react components that are connected to the store.
+
+**Boilerplate for a redux middleware**
+
+```js
+export default ({ dispatch }) =>
+  (next) =>
+      ( action ) => {
+      
+  };
+```
