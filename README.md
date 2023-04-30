@@ -376,3 +376,22 @@ export default ({ dispatch }) =>
 _Here we have `{ ...action, payload: response };` ... normally, we would just have a single action object with a type and payload property... but here we are taking all the properties, and adding them to the new action object and then overriding the payload property with the response from the promise._
 
 - After this we dispatch the new action object to the dispatch function.
+
+---
+
+### Redux State Validation Middlewhere (Development Only)
+
+- [Json Schema](https://json-schema.org/)
+
+- we will have a json schema file that describes the shape of our state object.
+
+  - **comments** will be an array of strings.
+  - **auth** will be a boolean property of **isSignedIn**.
+
+- [Json Schema Generator](https://jsonschema.net/)
+  - we can paste in a json object and it will generate a json schema for us.
+
+**Difference between Javascript objects and JSON** _in JSON all property names must be surrounded by double quotes._
+
+- [Tiny Validator 4](https://github.com/geraintluff/tv4)
+  - a library that will validate our state object against our json schema.
