@@ -417,3 +417,22 @@ _Here we have `{ ...action, payload: response };` ... normally, we would just ha
 - good for a distributed system across multiple domains
 
 > Request has a header with an authorization string
+---
+
+### Backend:
+> initial setup
+```js
+const express = require( 'express' );
+const http = require( 'http' );
+const bodyParser = require( 'body-parser' );
+const morgan = require( 'morgan' );
+
+// an instance of express
+const app = express();
+
+
+
+const port = process.env.PORT || 3090;
+const server = http.createServer( app );
+```
+> the http library is native to node... `const server = http.createServer( app );` creates an http server that knows how to receive requests and anything that comes in will be forwarded to the express application.
