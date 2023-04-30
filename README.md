@@ -308,3 +308,11 @@ const MyComponentWithLoading = withLoading(MyComponent);
 ```
 
 In this example, `withLoading` is a Higher Order Component that wraps `MyComponent`. It adds a loading state that displays a loading message until the data is fetched, and then passes the data as props to `MyComponent`.
+
+
+###### requireAuth.js
+
+> In our components folder we are going to create a new file called requireAuth.js which exports a function rather than a component hence the convention of a file name with a lowercase first letter.
+
+
+
