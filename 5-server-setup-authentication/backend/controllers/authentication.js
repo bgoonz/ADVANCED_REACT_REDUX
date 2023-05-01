@@ -33,5 +33,6 @@ exports.signup = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
+  // respond to request indicating the user was created
   res.json({ success: true });
 };
