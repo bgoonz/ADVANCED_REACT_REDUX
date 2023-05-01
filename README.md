@@ -504,17 +504,39 @@ const userSchema = new Schema({
 const ModelClass = mongoose.model("user", userSchema);
 ```
 
-
 ---
 
 > Authentication.js setup
 
 ```js
-exports.signup = async ( req, res, next ) => {
-// see if a user with the given email exists
-// if a user with email does exist, return an error
-// if a user with email does NOT exist, create and save user record
-// respond to request indicating the user was created
-    
-}
+exports.signup = async (req, res, next) => {
+  // see if a user with the given email exists
+  // if a user with email does exist, return an error
+  // if a user with email does NOT exist, create and save user record
+  // respond to request indicating the user was created
+};
+```
+
+---
+
+**Using bcrypt in user schema**
+
+```js
+//on save hook, encrypt password
+
+userSchema.pre("save", function (next) {
+  const user = this;
+  bcrypt.genSalt(10, function (err, salt) {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, null, function (err, hash) {
+      if (err) {
+        return next(err);
+      }
+      user.password = hash;
+      next();
+    });
+  });
+});
 ```

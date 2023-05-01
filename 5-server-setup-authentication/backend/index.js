@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-const bodyParser = require( "body-parser" );
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const router = require("./router");
@@ -17,9 +17,6 @@ mongoose
     console.log(err);
   });
 
-
-
-
 // an instance of express
 const app = express();
 
@@ -34,5 +31,3 @@ const port = process.env.PORT || 3090;
 const server = http.createServer(app);
 server.listen(port);
 console.log("Server listening on:", port);
-
-

@@ -3,6 +3,13 @@ exports.signup = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  //guard against submitting a password without an email
+  if (!email || !password) {
+    return res
+      .status(422)
+      .send({ error: "You must provide email and password" });
+  }
+
   // see if a user with the given email exists
   let existingUser;
   try {
