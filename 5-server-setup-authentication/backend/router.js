@@ -1,7 +1,7 @@
-function router(app) {
-  app.get("/", (req, res, next) => {
-    res.send(["water", "phone", "paper"]);
-  });
+const authentication = require("./controllers/authentication");
+
+function router( app ) {
+app.post("/signup", authentication.signup);
 }
 
 module.exports = router;
