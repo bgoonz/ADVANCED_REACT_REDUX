@@ -505,3 +505,16 @@ const ModelClass = mongoose.model("user", userSchema);
 ```
 
 
+---
+
+> Authentication.js setup
+
+```js
+exports.signup = async ( req, res, next ) => {
+// see if a user with the given email exists
+// if a user with email does exist, return an error
+// if a user with email does NOT exist, create and save user record
+// respond to request indicating the user was created
+    
+}
+```
