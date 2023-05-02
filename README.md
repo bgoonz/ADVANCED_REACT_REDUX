@@ -561,3 +561,10 @@ userSchema.pre("save", function (next) {
 > In the future when a user makes an authenticated request, they should indicate their JWT.
 
 `JSON web token + secret = userId`
+
+
+
+`jwt.encode( { sub: user.id, iat: timestamp }, config.secret );` creates a json web token.
+> sub is short for subject, iat is short for issued at time.
+
+
