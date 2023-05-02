@@ -33,11 +33,11 @@ const localLogin = new LocalStrategy(localOptions, function (
         if (err) {
           return done(err);
         }
-
+        //if there is no error but we did not find a user match
         if (!isMatch) {
           return done(null, false);
         }
-
+        //sucess... no error and we found a user match
         return done(null, user);
       });
     })
@@ -64,4 +64,5 @@ const jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
 });
 
 // tell passport to use this strategy
-passport.use(jwtLogin);
+passport.use( jwtLogin );
+passport.use( localLogin );
