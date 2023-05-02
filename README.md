@@ -562,9 +562,8 @@ userSchema.pre("save", function (next) {
 
 `JSON web token + secret = userId`
 
-
-
 `jwt.encode( { sub: user.id, iat: timestamp }, config.secret );` creates a json web token.
+
 > sub is short for subject, iat is short for issued at time.
 
 ---
@@ -572,5 +571,3 @@ userSchema.pre("save", function (next) {
 ### Passport
 
 **passport** is an authentication middleware for authentication strategies in express ...a strategy is a method for authenticating a user.
-
-
