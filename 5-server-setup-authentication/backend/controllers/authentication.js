@@ -43,5 +43,5 @@ exports.signup = async (req, res, next) => {
     return next(err);
   }
   // respond to request indicating the user was created
-  res.json({ success: true });
+  res.json({ token: tokenForUser(user) });
 };
